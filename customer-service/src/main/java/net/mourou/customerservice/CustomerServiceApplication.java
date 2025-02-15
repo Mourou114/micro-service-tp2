@@ -1,13 +1,16 @@
 package net.mourou.customerservice;
 
+import net.mourou.customerservice.config.CustomerConfigPrams;
 import net.mourou.customerservice.entities.Customer;
 import net.mourou.customerservice.repository.CustomerRepository;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.boot.context.properties.EnableConfigurationProperties;
 import org.springframework.context.annotation.Bean;
 
 @SpringBootApplication
+@EnableConfigurationProperties(CustomerConfigPrams.class)
 public class CustomerServiceApplication {
 
     public static void main(String[] args) {
