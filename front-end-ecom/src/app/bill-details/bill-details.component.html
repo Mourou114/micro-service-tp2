@@ -1,0 +1,45 @@
+<div class="container" *ngIf="billDetails">
+  <div class="row">
+    <div class="col-md-6">
+      <div class="card">
+        <div class="card-header">Bill Id: {{billId}}</div>
+        <div class="card-body text-sm-start">
+          <ul class="List-group">
+            <li class = "List-group-item">Bill Id : {{billDetails.id}}</li>
+            <li class = "List-group-item">Date : {{billDetails.billingDate | date:'dd/MM/yyyy'}}</li>
+            <li class = "List-group-item">CustomerId Id : {{billDetails.customer.id}}</li>
+            <li class = "List-group-item">CustomerId Name : {{billDetails.customer.name}}</li>
+            <li class = "List-group-item">CustomerId Email : {{billDetails.customer.email}}</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+    <div class="col-md-6">
+      <div class="card">
+        <div class="card-header">Product Items</div>
+        <div class="card-body">
+          <table class="table">
+            <thead>
+            <tr class="bg-dark text-white">
+              <th>Product Id</th><th>Product Name</th><th>Quantity</th><th>Price</th><th>Amount</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr *ngFor="let pi of billDetails.productItem">
+              <td>{{pi.product.id}}</td>
+              <td>{{pi.product.name}}</td>
+              <td>{{pi.quantity}}</td>
+              <td class="text-end" >{{pi.unitPrice | number : '.2'}}</td>
+              <td class="text-end" >{{pi.amount | number : '.2'}}</td>
+            </tr>
+            <tr class="bg-info text-white">
+              <td colspan="4" class="text-end" >Total</td>
+              <td class="text-end" >{{billDetails.total | number : '.2'}}</td>
+            </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
